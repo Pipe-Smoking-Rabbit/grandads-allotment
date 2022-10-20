@@ -1,8 +1,19 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   text-align: center;
   background-color: #222d28;
   color: white;
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+.fundsAndMonth {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
 }
