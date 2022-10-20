@@ -1,4 +1,4 @@
-export default allotmentPlot = [
+const allotmentPlot = [
   null,
   null,
   null,
@@ -16,3 +16,5 @@ export default allotmentPlot = [
   null,
   null,
 ];
+
+export default allotmentPlot;
