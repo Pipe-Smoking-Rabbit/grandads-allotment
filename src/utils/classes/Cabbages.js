@@ -3,7 +3,7 @@ import Vegatable from "./Vegatable";
 class Cabbages extends Vegatable {
   constructor() {
     super();
-    this.yield = 1.15;
+    this.baseYield = 1.15;
   }
 }
 

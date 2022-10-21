@@ -1,26 +1,26 @@
 class Vegatable {
   constructor() {
     (this.name = "Vegatable"),
-      (this.growth = 0),
+      (this.growthStage = 0),
       (this.isFertilised = false),
       (this.hasWeeds = true),
       (this.isWatered = false),
       (this.wasTilled = false),
-      (this.yield = 1);
+      (this.baseYield = 1),
+      (this.currentYield = this.baseYield);
   }
 
   harvest() {
-    const wateredBonus = this.isWatered ? this.yield * 2 : 0;
-    const fertilisedBonus = this.isFertilised ? this.yield * 1.5 : 0;
-    const weededBonus = this.hasWeeds ? 0 : this.yield * 1.25;
-    const tilledBonus = this.wasTilled ? this.yield * 1.75 : 0;
     return (
-      this.yield + wateredBonus + fertilisedBonus + weededBonus + tilledBonus
+      this.currentYield
     );
   }
 
   water() {
-    this.isWatered = true;
+    if (!this.isWatered) {
+        this.currentYield += this.baseYield 
+        this.isWatered = true;
+    } return this.isWatered
   }
 
   fertilise() {
@@ -36,11 +36,7 @@ class Vegatable {
   }
 
   grow() {
-    if (this.growth < 10) {
-      this.growth++;
-    } else {
-      this.harvest();
-    }
+    
   }
 }
 
