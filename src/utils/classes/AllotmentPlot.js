@@ -25,10 +25,10 @@ class AllotmentPlot {
   }
 
   passTime(newMonth) {
-    const winterMonths = ["November", "December", "January", "February"];
+    const winterMonths = ["December", "January", "February"];
     const springMonths = ["March", "April", "May"];
     const summerMonths = ["June", "July", "August"];
-    const autumnMonths = ["September", "October"];
+    const autumnMonths = ["September", "October", "November"];
     if (winterMonths.includes(newMonth)) {
       this.isTilled = false;
     }
@@ -41,19 +41,45 @@ class AllotmentPlot {
   }
 
   waterService() {
-    this.isWatered = true;
+    if (!this.isWatered) {
+      this.growing.forEach((plant) => {
+        if (plant) plant.water();
+      });
+      this.isWatered = true;
+      return true;
+    }
+    return false;
   }
 
   fertiliseService() {
-    this.isFertilised = true;
+    if (!this.isFertilised) {
+      this.growing.forEach((plant) => {
+        if (plant) plant.fertilise();
+      });
+      this.isFertilised = true;
+      return true;
+    }
+    return false;
   }
 
   tillTheEarth() {
-    this.isTilled = true;
+    const hasNoPlants = this.growing.every((plant) => {
+      return plant === null;
+    });
+    if (hasNoPlants && !this.isTilled) {
+      this.isTilled = true;
+      return true;
+    }
+    return false;
   }
 
   removeWeeds() {
-    this.hasWeeds = false;
+    if (this.hasWeeds) {
+      this.growing.forEach((plant) => {
+        if (plant) plant.deWeed();
+      });
+      this.hasWeeds = false;
+    }
   }
 }
 
