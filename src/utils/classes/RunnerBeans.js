@@ -1,6 +1,6 @@
-import Vegatable from "./Vegatable";
+import Vegetable from "./Vegetable";
 
-class RunnerBeans extends Vegatable {
+class RunnerBeans extends Vegetable {
   constructor() {
     super();
     this.baseYield = 1.1;
