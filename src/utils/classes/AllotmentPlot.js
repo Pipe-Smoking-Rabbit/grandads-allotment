@@ -1,6 +1,6 @@
 class AllotmentPlot {
   constructor() {
-    (this.growing = [
+    this.growing = [
       null,
       null,
       null,
@@ -17,24 +17,29 @@ class AllotmentPlot {
       null,
       null,
       null,
-    ]),
-      (this.isTilled = false),
-      (this.hasWeeds = true),
-      (this.isWatered = false),
-      (this.isFertilised = false);
+    ];
+    this.currentMonth = "April";
+    this.isTilled = false;
+    this.hasWeeds = false;
+    this.isWatered = false;
+    this.isFertilised = false;
   }
 
   plant(vegetable) {
     let planted = false;
-    this.growing.forEach((slot, i) => {
-      if (planted === false && slot === null) {
-        if (this.isTilled) {
-          vegetable.applyTilled();
+    const springMonths = ["March", "April", "May"];
+    if (springMonths.includes(this.currentMonth)) {
+      this.growing.forEach((slot, i) => {
+        if (planted === false && slot === null) {
+          if (this.isTilled) vegetable.applyTilled();
+          if (this.isWatered) vegetable.water();
+          if (this.isFertilised) vegetable.fertilise();
+          if (this.hasWeeds) vegetable.giveWeeds();
+          this.growing[i] = vegetable;
+          planted = true;
         }
-        this.growing[i] = vegetable;
-        planted = true;
-      }
-    });
+      });
+    }
     if (planted) return true;
     return false;
   }
@@ -48,20 +53,11 @@ class AllotmentPlot {
       this.isTilled = false;
     }
     if (summerMonths.includes(newMonth)) {
-      const chanceOfWeeds = Math.random() * 100;
-      if (chanceOfWeeds > 50) {
-        this.growing.forEach((plant) => {
-          if (plant) {
-            plant.hasWeeds = true;
-            plant.currentYield -= plant.baseYield;
-          }
-        });
-        this.hasWeeds = true;
-      }
-      this.isWatered = false;
+      this.growWeeds();
+      this.getDry();
     }
     if (springMonths.includes(newMonth)) {
-      this.isFertilised = false;
+      this.needsFertilising();
     }
     if (autumnMonths.includes(newMonth)) {
       return this.growing.filter((plant, i) => {
@@ -72,8 +68,10 @@ class AllotmentPlot {
             return true;
           }
         }
+        return false;
       });
     }
+    this.currentMonth = newMonth;
   }
 
   waterService() {
@@ -86,6 +84,12 @@ class AllotmentPlot {
     }
     return false;
   }
+  getDry() {
+    this.growing.forEach((plant) => {
+      if (plant) plant.isWatered = false;
+    });
+    this.isWatered = false;
+  }
 
   fertiliseService() {
     if (!this.isFertilised) {
@@ -96,6 +100,12 @@ class AllotmentPlot {
       return true;
     }
     return false;
+  }
+  needsFertilising() {
+    this.growing.forEach((plant) => {
+      if (plant) plant.isFertilised = false;
+    });
+    this.isFertilised = false;
   }
 
   tillTheEarth() {
@@ -118,6 +128,15 @@ class AllotmentPlot {
       return true;
     }
     return false;
+  }
+  growWeeds() {
+    const chanceOfWeeds = Math.random() * 100;
+    if (chanceOfWeeds > 50) {
+      this.growing.forEach((plant) => {
+        if (plant) plant.giveWeeds();
+      });
+      this.hasWeeds = true;
+    }
   }
 }
 

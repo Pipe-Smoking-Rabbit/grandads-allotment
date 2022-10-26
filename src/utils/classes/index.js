@@ -4,4 +4,4 @@ import Carrots from "./Carrots";
 import RunnerBeans from "./RunnerBeans";
 import AllotmentPlot from "./AllotmentPlot";
 
-export default { Potatoes, Cabbages, Carrots, RunnerBeans, AllotmentPlot };
+export { Potatoes, Cabbages, Carrots, RunnerBeans, AllotmentPlot };

@@ -1,12 +1,12 @@
 class Vegetable {
   constructor() {
-    (this.name = "Vegetable"),
-      (this.isFertilised = false),
-      (this.hasWeeds = true),
-      (this.isWatered = false),
-      (this.wasTilled = false),
-      (this.baseYield = 1),
-      (this.currentYield = this.baseYield);
+    this.name = "Vegetable";
+    this.isFertilised = false;
+    this.hasWeeds = false;
+    this.isWatered = false;
+    this.wasTilled = false;
+    this.baseYield = 1;
+    this.currentYield = this.baseYield;
   }
 
   harvest() {
@@ -32,6 +32,11 @@ class Vegetable {
       this.currentYield += this.baseYield;
       this.hasWeeds = false;
     }
+  }
+
+  giveWeeds() {
+    this.hasWeeds = true;
+    this.currentYield -= this.baseYield;
   }
 
   applyTilled() {
