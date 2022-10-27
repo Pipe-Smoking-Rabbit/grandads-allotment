@@ -1,5 +1,5 @@
 import '../Stlyes/Header.css'
 
 export default function Header () {
-    return <h1 className='title'>Grandad's Allotment</h1>;
+    return <h1 className='Title'>Grandad's Allotment</h1>;
 }
