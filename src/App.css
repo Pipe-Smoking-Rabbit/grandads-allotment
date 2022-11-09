@@ -17,3 +17,9 @@
   justify-content: space-between;
   width: 30%;
 }
+
+.LeftPanels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
