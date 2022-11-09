@@ -1,4 +1,4 @@
-import '../Stlyes/Calendar.css'
+import '../CSS/Calendar.css'
 
 export default function Calendar({ month, setMonth }) {
   return (

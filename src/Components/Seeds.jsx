@@ -1,4 +1,4 @@
-import "../Stlyes/Seeds.css";
+import "../CSS/Seeds.css";
 
 export default function Seeds({ funds, setFunds, setAllotment }) {
   return (

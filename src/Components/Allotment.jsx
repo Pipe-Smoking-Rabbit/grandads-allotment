@@ -1,4 +1,4 @@
-import "../Stlyes/Allotment.css";
+import "../CSS/Allotment.css";
 import regularSoilBlock from "../Images/regular-soil-block.png";
 
 export default function Allotment({ allotment, setAllotment, setFunds, month }) {

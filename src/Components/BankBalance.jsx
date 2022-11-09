@@ -1,4 +1,4 @@
-import '../Stlyes/BankBalance.css'
+import '../CSS/BankBalance.css'
 
 export default function BankBalance({ funds }) {
   return (

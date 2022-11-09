@@ -1,4 +1,4 @@
-import '../Stlyes/Header.css'
+import '../CSS/Header.css'
 
 export default function Header () {
     return <h1 className='Title'>Grandad's Allotment</h1>;
