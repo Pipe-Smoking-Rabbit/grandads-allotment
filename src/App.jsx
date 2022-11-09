@@ -1,6 +1,6 @@
 import "./App.css";
-import { useState, useEffect } from "react";
-import { AllotmentPlot, Carrots } from "./utils/classes/index.js";
+import { useState } from "react";
+import { AllotmentPlot } from "./utils/classes/index.js";
 import Header from "./Components/Header";
 import Allotment from "./Components/Allotment";
 import BankBalance from "./Components/BankBalance";
@@ -11,6 +11,8 @@ export default function App() {
   const [funds, setFunds] = useState(200);
   const [month, setMonth] = useState("April");
   const [allotment, setAllotment] = useState(new AllotmentPlot());
+
+  console.log(allotment.growing)
 
   return (
     <div className="App">
